@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fridge Controller</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
+
+<body>
+    <section class="section ">
+        <div class="container">
+            <h1 class="title">
+                Control de la température des frigos
+            </h1>
+            
+            <div class="column">
+                <button class="button is-success" id="addFridgeButton">
+                    <span class="icon is-small">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                    &nbsp; Ajouter un frigo
+                </button>
+            </div>
+            
+            <div class="columns">
+
+                <div class="column is-full">
+                    <div class="card-lists columns" id="fridgeContainer">
+                        <!-- Ici, on va insérer nos listes récupérées à travers notre API -->
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal" id="showAllRecords">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <form action="" method="POST">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Relevés de températures</p>
+                    <button class="delete close" type="button" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+
+                   
+                    
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button close" type="button">Close</button>
+                </footer>
+            </form>
+        </div>
+    </div>
+
+    <!-- Les templates sont un peu comme les partials en ejs. Ce sont des modèles d'éléments qui sont réutilisables.
+    Par exemple si on veut créer une liste, on peut reutiliser le template qui possède l'id "list-template"
+    Ici on a créé le template a partir d'une liste déjà existante plus haut -->
+
+    <template id="fridge-template">
+        <!-- list -->
+        <div class="column is-one-quarter panel" data-fridge-id="">
+           <div class="panel-heading has-background-info">
+               <div class="columns">
+
+                   <div class="column">
+                       <h2 class="has-text-white"></h2>
+
+                       <form action="" method="POST" class="is-hidden edit-fridge-form">
+                           <input type="hidden" name="fridge-id" value="">
+                           <div class="field has-addons">
+                               <div class="control">
+                                   <input type="text" class="input is-small" name="name" value=""
+                                       placeholder="Nom du frigo">
+                               </div>
+                               <div class="control">
+                                   <button class="button is-small is-success">Valider</button>
+                               </div>
+                           </div>
+                       </form>
+                   </div>
+
+                   <div class="column is-narrow">
+                       <a href="#" class="is-pulled-right button--add-fridge">
+                           <span class="icon is-small has-text-white">
+                               <i class="fas fa-plus"></i>
+                           </span>
+                       </a>
+                       <a href="#" class="button--delete-fridge">
+                           <span class="icon is-small has-text-white">
+                               <i class="fas fa-trash"></i>
+                           </span>
+                       </a>
+                   </div>
+               </div>
+           </div>
+           <div class="panel-block is-block has-background-light">
+            <button class="button is-success" id="addRecordButton">
+                <span class="icon is-small">
+                    <i class="fas fa-plus"></i>
+                </span>
+                &nbsp; Relever la température
+            </button>
+
+            <button class="button is-success" id="showRecordsButton">
+                
+                Afficher les relevés de température
+            </button>
+           </div>
+       </div>
+       <!--/ list -->
+   </template>
+
+   <template id="temperature-template">
+
+    <table class="table">
+        <caption class="table-title">Relevés de température</caption>
+        <thead>
+          <tr>
+            <th>Température</th>
+            <th>ID</th>
+            <th>Date et heure du relevé</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+          <!-- Ajouter plus de lignes ici si nécessaire -->
+        </tbody>
+    </table>
+   </template>
+
+
+    <!-- Chargement de mon fichier JS -->
+    <script src="./assets/js/fridges.js"></script>
+    <script src="./assets/js/utils.js"></script>
+    <script src="./assets/js/records.js"></script>
+    <script src="./assets/js/app.js"></script>
+
+
+</body>
+
+</html>
