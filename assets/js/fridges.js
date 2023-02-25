@@ -1,23 +1,12 @@
 
 
-
-
 const fridgeModule = {
 
     showAddFridgeModal: function(){
         const modal = document.getElementById("addFridgeModal");
         modal.classList.add('is-active');
       },
-     handleAddFridgeForm: async function(event) {
-        /**Une fois le formulaire soumit, je veux effectuer le traitement nécessaire
-         * Plan d'action :
-         * 1. On coupe le comportement par défaut de l'évenement (ici le refresh de la page)
-         * 2. Récupérer les infos des inputs du formulaire
-         * 3. On veut ajouter cette nouvelle liste dans notre BDD
-         * 4. on appelle la méthode de création (ajout dans le DOM) en lui passant le formData
-         * 5. Fermer la modale
-         * 6. On reset le contenu du formulaire
-         */
+     /*handleAddFridgeForm: async function(event) {
         event.preventDefault();
         const formData = new FormData(event.target);
         try {
@@ -35,7 +24,7 @@ const fridgeModule = {
         }
         utilModule.hideModals();
         event.target.reset();
-      },
+      },*/
     makeFridgeInDOM: function(fridge){
         // Récupérer le template
         const template = document.getElementById("fridge-template");

@@ -4,9 +4,13 @@ const utilModule = {
 
     hideModals: function(){
         const modals = document.querySelectorAll(".modal");
+        const table = document.querySelector(".table");
         for (const modal of modals) {
             modal.classList.remove("is-active");
+            table.remove();
+            
         }
+      
     },
 }
 

@@ -12,10 +12,9 @@ const recordModule = {
 
     },
 
-  
-
     getAllRecordsFromAFridge: async function(fridgeId){
         const response = await fetch(`${utilModule.base_url}/fridges/${fridgeId}/records`);
+        console.log(response)
         const jsonData = await response.json();
         console.log(jsonData)
         if(!response.ok) { throw new Error("Un problème est survenu sur la requête HTTP !")};
@@ -53,7 +52,7 @@ const recordModule = {
       
         const tableContainer = document.querySelector(".modal-card-body");
         tableContainer.appendChild(newTable);
-      }
+    }
      /*handleAddListForm: async function(event) {
         /**Une fois le formulaire soumit, je veux effectuer le traitement nécessaire
          * Plan d'action :
@@ -82,6 +81,7 @@ const recordModule = {
         utilModule.hideModals();
         event.target.reset();
       },*/
+
     /*makeListInDOM: function(list){
         // Récupérer le template
         const template = document.getElementById("list-template");
@@ -157,8 +157,6 @@ const recordModule = {
         // On cache le formulaire (quelque soit le résultat du traitement)
         event.target.classList.add('is-hidden');
         h2.classList.remove('is-hidden');
-
-
       },
 
       deleteList: async function(event){
@@ -212,13 +210,4 @@ const recordModule = {
       }*/
 }
 
-
-/**Lorsque je clique sur le titre h2 d'une liste, il disparait et laisse apparaître le formulaire caché sous le titre 
- * 1- Ajouter un eventListener de type "dblclick" sur notre élément h2
- * 2- Lorsque l'évenement est enregistré : On masque le titre (en ajoutant une classe), et on affiche le formulaire (en lui retirant une classe).
- * 3- Rajouter un eventListener de type "submit" sur notre formulaire 
- * 4- Lorsque l'évenement est activé, on enregistre le nouveau nom de la liste sur la db via l'API
- * 5- Si l'api nous retourne une erreur, on fait réapparaitre le titre h2, et disparaitre le form (grace à la classe "is-hidden")
- * 6- Si l'api nous retourne un succès, on modifie la valeur du h2, puis on l'affiche, en oubliant pas de faire disparaître le form
-*/
 
